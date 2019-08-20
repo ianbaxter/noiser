@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica, sans-serif;
+}
+
+.btn-play {
+    padding: 30px;
+    background: blue;
+    border-radius: 10px;
+    font-size: 40px;
+    color: white;
+}
