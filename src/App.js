@@ -1,127 +1,174 @@
 import React, { Component } from "react";
 import './index.css';
-import AudioChunk from "./audio";
+import Synth from "./synth";
 
-let audioChunk = new AudioChunk();
+let synth = new Synth();
 
 class App extends Component {
   state = {
     playing: false,
+    recording: false
   }
 
+  // Initialise audio
   componentDidMount() { 
-    audioChunk.init();
+    synth.init();
   }
   
   startSynth = playing => {
     if (playing) {
-      audioChunk.stop();
+      synth.stop();
       this.setState({playing: false});
     } else {
-      audioChunk.start();
+      synth.start();
       this.setState({playing: true});
     }
   }
 
+  toggleRecording = recording => {
+    if (!recording) {
+      synth.startRecording();
+      this.setState({recording: true});
+    } else {
+      synth.stopRecording();
+      this.setState({recording: false});
+    }
+  }
+
   handleChange({ target }) {
-    console.log(target);
     switch (target.name) {
       case "freq":
-        audioChunk.changeFreq(target.value)
+        synth.changeFreq(target.value)
         break;
       case "filter-freq":
-        audioChunk.changeFilterFreq(target.value)
+        synth.changeFilterFreq(target.value)
         break;
       case "amp":
-        audioChunk.changeAmp(target.value)
+        synth.changeAmp(target.value)
         break;
       case "lfo":
-        audioChunk.changeLfoSpeed(target.value)
+        synth.changeLfoSpeed(target.value)
         break;
       case "delay-time":
-        audioChunk.changeDelayTime(target.value)
+        synth.changeDelayTime(target.value)
         break;
       case "delay-feedback":
-        audioChunk.changeDelayFeedback(target.value)
+        synth.changeDelayFeedback(target.value)
         break;
+      default:
+        console.log("Default case")
     }
   }
 
   render() {
     return (
       <div>
-        <button 
-          className="btn-play"
-          onClick={() => this.startSynth(this.state.playing)}
-        >
-          {this.state.playing ? "Stop" : "Play"}
-        </button>
-        <div>
-          <input 
-            type='range' 
-            name="freq" 
-            min='20' 
-            max='8000' 
-            step='1'
-            onInput={ this.handleChange } 
-          />
-          <label for="freq">Osc Frequency</label>
+        <div className="top">
+          <button 
+            className="on-btn"
+            onClick={() => this.startSynth(this.state.playing)}
+          >
+            {this.state.playing ? "On" : "Off"}
+          </button>
+          <p className="title">NOISER</p>
+          <button 
+            className="record-btn"
+            onClick={ () => this.toggleRecording(this.state.recording) }
+            name={this.state.recording ? "stop" : "record"}
+          >
+            <div className={this.state.recording ? "square" : "circle"}></div>
+          </button>
         </div>
-        <div>
-          <input 
-            type='range' 
-            name="filter-freq" 
-            min='20' 
-            max='2000' 
-            step='1'
-            onInput={ this.handleChange } 
-          />
-          <label for="filter-freq">Filter Frequency</label>
+        <div className="controls">
+          <div className="module">
+            <label className="module-Title first-module-title" for="delay-module">Source</label>
+            <div name="delay-module" className="controls">
+              <div className="control first-control">
+                <input 
+                  type="range"
+                  orient="vertical"
+                  name="amp" 
+                  min='0' 
+                  max='1' 
+                  step='0.01'
+                  onInput={ this.handleChange } 
+                />
+                <label for="amp">DCO Volume</label>
+              </div>
+              <div className="control">
+                <input 
+                  type="range"
+                  orient="vertical" 
+                  name="freq" 
+                  min='10' 
+                  max='8000' 
+                  step='1'
+                  onInput={ this.handleChange } 
+                />
+                <label for="freq">DCO</label>
+              </div>
+              <div className="control">
+                <input 
+                  type="range"
+                  orient="vertical"
+                  name="filter-freq" 
+                  min='20' 
+                  max='8000' 
+                  step='1'
+                  onInput={ this.handleChange } 
+                />
+                <label for="filter-freq">LPF</label>
+              </div>
+              <div className="control">
+                <input 
+                  type="range"
+                  orient="vertical"
+                  name="lfo" 
+                  min='1' 
+                  max='100' 
+                  step='1'
+                  onInput={ this.handleChange } 
+                />
+                <label for="lfo">LFO</label>
+              </div>
+            </div>
+          </div>
+          <div className="module">
+            <label className="module-Title" for="delay-module">Delay</label>
+            <div name="delay-module" className="controls">
+              <div className="control">
+                <input 
+                  type="range" 
+                  orient="vertical"
+                  name="delay-time" 
+                  min='0' 
+                  max='1' 
+                  step='0.05'
+                  onInput={ this.handleChange } 
+                />
+                <label for="delay-time">Time</label>
+              </div>
+              <div className="control">
+                <input 
+                  type="range"
+                  orient="vertical"
+                  name="delay-feedback" 
+                  min='0' 
+                  max='0.9' 
+                  step='0.1'
+                  onInput={ this.handleChange } 
+                />
+                <label for="delay-feedback">Feedback</label>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <input 
-            type='range' 
-            name="amp" 
-            min='0' 
-            max='1' 
-            step='0.01'
-            onInput={ this.handleChange } 
-          />
-          <label for="amp">Volume</label>
+        <div className="recording">
         </div>
-        <div>
-          <input 
-            type='range' 
-            name="lfo" 
-            min='1' 
-            max='100' 
-            step='1'
-            onInput={ this.handleChange } 
-          />
-          <label for="lfo">Lfo</label>
-        </div>
-        <div>
-          <input 
-            type='range' 
-            name="delay-time" 
-            min='0.1' 
-            max='6' 
-            step='0.1'
-            onInput={ this.handleChange } 
-          />
-          <label for="delay-time">Delay Time</label>
-        </div>
-        <div>
-          <input 
-            type='range' 
-            name="delay-feedback" 
-            min='0' 
-            max='0.9' 
-            step='0.1'
-            onInput={ this.handleChange } 
-          />
-          <label for="delay-feedback">Delay Feedback</label>
-        </div>
+        <h3>Recordings</h3>
+        <ol id="recordingsList">
+          <audio id="recording" controls></audio>
+        </ol>
       </div>
     );
   }
