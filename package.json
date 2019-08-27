@@ -2,7 +2,7 @@
   "name": "noiser",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ianbaxter.github.io/noiser",
+  "homepage": "https://ianmakeslists.com/noiser",
   "dependencies": {
     "@types/ffmpeg": "^1.0.0",
     "@types/recorder-js": "^1.0.1",
