@@ -1,5 +1,3 @@
-let ffmpeg = require("ffmpeg");
-
 let audioContext, osc, filter, amp, lfo, delay, delaySource, feedback, recorder, recordingStream;
 
 audioContext = new(window.AudioContext || window.webkitAudioContext)();
@@ -47,6 +45,9 @@ class Synth {
     }
 
     start() {
+        if (audioContext.state !== "running") {
+            audioContext.resume();
+        }
         amp.connect(audioContext.destination);
         delaySource.connect(audioContext.destination);
         delay.connect(audioContext.destination);
@@ -106,22 +107,6 @@ class Synth {
 
     stopRecording() {
         recorder.addEventListener("dataavailable", function(e) {
-            // Convert weba blob to mp3
-            // try {
-            //     let process = new ffmpeg(URL.createObjectURL(e.data));
-            //     process.then(audio => {
-            //         audio.fnExtractSoundToMP3((document.querySelector("#recording").src), function (error, file) {
-            //             if (!error) {
-            //                 console.log(file);
-            //             }
-            //         });
-            //     }, function (err) {
-            //         console.log("Error" + err);
-            //     });
-            // } catch (e) {
-            //     console.log(e);
-            // }
-
             document.querySelector("#recording").src=URL.createObjectURL(e.data);
             recorder = null;
             recordingStream = null;

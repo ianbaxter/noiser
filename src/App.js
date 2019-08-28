@@ -99,7 +99,8 @@ class App extends Component {
                 <input 
                   type="range"
                   orient="vertical" 
-                  name="freq" 
+                  name="freq"
+                  defaultValue="440" 
                   min='10' 
                   max='8000' 
                   step='1'
@@ -111,7 +112,8 @@ class App extends Component {
                 <input 
                   type="range"
                   orient="vertical"
-                  name="filter-freq" 
+                  name="filter-freq"
+                  defaultValue="1000" 
                   min='20' 
                   max='8000' 
                   step='1'
@@ -123,7 +125,8 @@ class App extends Component {
                 <input 
                   type="range"
                   orient="vertical"
-                  name="lfo" 
+                  name="lfo"
+                  defaultValue="20" 
                   min='1' 
                   max='100' 
                   step='1'
@@ -140,7 +143,8 @@ class App extends Component {
                 <input 
                   type="range" 
                   orient="vertical"
-                  name="delay-time" 
+                  name="delay-time"
+                  defaultValue="0.5" 
                   min='0' 
                   max='1' 
                   step='0.05'
@@ -152,7 +156,8 @@ class App extends Component {
                 <input 
                   type="range"
                   orient="vertical"
-                  name="delay-feedback" 
+                  name="delay-feedback"
+                  defaultValue="0.8" 
                   min='0' 
                   max='0.9' 
                   step='0.1'
@@ -169,6 +174,14 @@ class App extends Component {
         <ol id="recordingsList">
           <audio id="recording" controls></audio>
         </ol>
+        <div class="description">
+          <p>
+            Noiser uses the Web Audio API to create earthshattering dubbed out noise.
+            <br></br>
+            <br></br>
+            Try sweeping through the frequencies with the digitally controlled oscillator (DCO) to build up a wall of noise.
+          </p>
+        </div>
       </div>
     );
   }
