@@ -1,130 +1,164 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    font-family: Helvetica, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+  background: radial-gradient(#ffb11f, #ff791f);
+}
+
+#content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#synth-interface {
+  box-shadow: 8px 10px 20px 0px rgba(46, 61, 73, 0.15);
+  border-radius: 40px;
 }
 
 .top {
-    display: flex;
+  display: flex;
 }
 
 .title {
-    color: rgb(65, 64, 64);
-    font-size: 70px;
-    font-style: italic;
-    letter-spacing: 16px;
-    width: 100%;
-    text-align: center;
-    border-style: solid;
-    border-color: grey;
-    border-width: 5px 0;
-    text-shadow: 3px 3px 0px grey, 6px 6px 0px rgba(173, 171, 171, 0.801), 9px 9px 0px rgb(216, 216, 216);
+  color: rgb(65, 64, 64);
+  background: lightgray;
+  font-size: 70px;
+  font-style: italic;
+  letter-spacing: 16px;
+  width: 100%;
+  text-align: center;
+  border-style: solid;
+  border-color: grey;
+  border-width: 5px 0;
+  text-shadow: 3px 3px 0px grey, 6px 6px 0px rgba(173, 171, 171, 0.801),
+    9px 9px 0px rgb(216, 216, 216);
 }
 
 .on-btn {
-    padding: 20px;
-    background: black;
-    font-size: 40px;
-    color: white;
+  padding: 20px;
+  background: black;
+  font-size: 40px;
+  color: white;
+  border-top-left-radius: 40px;
 }
 
-.record-btn {  
-    width: 120px;
-    background: black;
-    display: flex;
-    justify-content: center;
+.record-btn {
+  width: 120px;
+  background: black;
+  display: flex;
+  justify-content: center;
+  border-top-right-radius: 40px;
 }
 
 .square {
-    width: 35px;
-    height: 35px;
-    background-color: red;
+  width: 35px;
+  height: 35px;
+  background-color: red;
 }
 
 .circle {
-    width: 35px;
-    height: 35px;
-    background-color: red;
-    border-radius: 50px;
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  border-radius: 50px;
 }
 
 .module-Title {
-    border-style: groove;
-    border-width: 0 0 1px 1px;
-    font-size: 20px;
-    padding: 20px 0 5px 0;
+  border-style: groove;
+  border-width: 0 0 1px 1px;
+  font-size: 20px;
+  padding: 20px 0 5px 0;
 }
 
 .controls {
-    background-color: rgb(255, 177, 31);
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    padding: 0 0 10px 0;
+  background-color: #ffb11f;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  padding: 0 0 10px 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
 .module {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .control {
-    padding: 20px;
-    width: 60px;
-    border-style: groove;
-    border-width: 0 0 0 1px;
-    margin-top: 15px;
+  padding: 20px;
+  width: 60px;
+  border-style: groove;
+  border-width: 0 0 0 1px;
+  margin-top: 15px;
 }
 
 .first-control {
-    border-width: 0;
+  border-width: 0;
 }
 
 .first-module-title {
-    border-width: 0 0 1px 0;
+  border-width: 0 0 1px 0;
 }
 
-input[type=range][orient=vertical] {
-    writing-mode: vertical-lr;
-    -webkit-appearance: slider-vertical;
-    width: 8px;
-    height: 150px;
-    max-width: 20px;
-    cursor: pointer;
+input[type="range"][orient="vertical"] {
+  writing-mode: vertical-lr;
+  -webkit-appearance: slider-vertical;
+  width: 8px;
+  height: 150px;
+  max-width: 20px;
+  cursor: pointer;
 }
 
 label {
-    padding-top: 15px;
-    display: flex;
-    justify-content: center;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .recording {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 h3 {
-    margin-top: 30px;
-    padding-bottom: 20px;
+  margin-top: 30px;
+  padding-bottom: 20px;
 }
 
 .description {
-    margin-top: 40px;
-    width: 600px;
+  margin-top: 40px;
+  width: 600px;
 }
 
-@media only screen and (max-width: 600px) {  
-    body {
-        justify-content: left;
-    }
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 10vw;
+  height: 70px;
+  text-align: center;
+}
+
+.dev-svg {
+  max-width: 2.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    justify-content: left;
+  }
 }
