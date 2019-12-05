@@ -28,4 +28,4 @@ Go to http://localhost:3000/ to view the application.
 
 ## Deploy
 
-I used this useful [guide](https://medium.com/the-andela-way/how-to-deploy-your-react-application-to-github-pages-in-less-than-5-minutes-8c5f665a2d2a) to deploy to Github pages. 
+I used this [useful guide](https://medium.com/the-andela-way/how-to-deploy-your-react-application-to-github-pages-in-less-than-5-minutes-8c5f665a2d2a) to deploy to Github pages. 
