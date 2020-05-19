@@ -7,7 +7,7 @@ let synth = new Synth();
 class App extends Component {
   state = {
     playing: false,
-    recording: false
+    recording: false,
   };
 
   // Initialise audio
@@ -15,7 +15,7 @@ class App extends Component {
     synth.init();
   }
 
-  startSynth = playing => {
+  startSynth = (playing) => {
     if (playing) {
       synth.stop();
       this.setState({ playing: false });
@@ -25,7 +25,7 @@ class App extends Component {
     }
   };
 
-  toggleRecording = recording => {
+  toggleRecording = (recording) => {
     if (!recording) {
       synth.startRecording();
       this.setState({ recording: true });
@@ -62,146 +62,174 @@ class App extends Component {
 
   render() {
     return (
-      <div id="content-wrap">
-        <div>
-          <div id="synth-interface">
-            <div className="top">
-              <button
-                className="on-btn"
-                onClick={() => this.startSynth(this.state.playing)}
-              >
-                {this.state.playing ? "On" : "Off"}
-              </button>
-              <p className="title">NOISER</p>
-              <button
-                className="record-btn"
-                onClick={() => this.toggleRecording(this.state.recording)}
-                name={this.state.recording ? "stop" : "record"}
-              >
-                <div
-                  className={this.state.recording ? "square" : "circle"}
-                ></div>
-              </button>
-            </div>
-            <div className="controls">
-              <div className="module">
-                <label
-                  className="module-Title first-module-title"
-                  htmlFor="delay-module"
+      <div className="app">
+        <div className="app-container">
+          <main>
+            <div className="synth-interface">
+              <div className="top-panel">
+                <button
+                  className="btn btn__on"
+                  onClick={() => this.startSynth(this.state.playing)}
                 >
-                  Source
-                </label>
-                <div name="delay-module" className="controls">
-                  <div className="control first-control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="amp"
-                      min="0"
-                      max="1"
-                      step="0.01"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="amp">DCO Volume</label>
-                  </div>
-                  <div className="control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="freq"
-                      defaultValue="440"
-                      min="10"
-                      max="8000"
-                      step="1"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="freq">DCO</label>
-                  </div>
-                  <div className="control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="filter-freq"
-                      defaultValue="1000"
-                      min="20"
-                      max="8000"
-                      step="1"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="filter-freq">LPF</label>
-                  </div>
-                  <div className="control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="lfo"
-                      defaultValue="20"
-                      min="1"
-                      max="100"
-                      step="1"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="lfo">LFO</label>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill={this.state.playing ? "red" : "white"}
+                    width="32px"
+                    height="32px"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+                  </svg>
+                </button>
+                <h1>NOISER</h1>
+                <button
+                  className="btn btn__record"
+                  onClick={() => this.toggleRecording(this.state.recording)}
+                  name={this.state.recording ? "stop" : "record"}
+                >
+                  {this.state.recording ? (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="red"
+                      width="32px"
+                      height="32px"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M6 6h12v12H6z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      width="32px"
+                      height="32px"
+                    >
+                      <path d="M24 24H0V0h24v24z" fill="none" />
+                      <circle cx="12" cy="12" r="8" />
+                    </svg>
+                  )}
+                  {/* <div
+                    className={this.state.recording ? "square" : "circle"}
+                  ></div> */}
+                </button>
+              </div>
+              <div className="main-panel">
+                <div className="module module__source">
+                  <label
+                    className="module-title module-title__source"
+                    htmlFor="source-module"
+                  >
+                    Source
+                  </label>
+                  <div name="source-module" className="controls">
+                    <div className="control control__source">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="amp"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="amp">DCO Volume</label>
+                    </div>
+                    <div className="control control__source">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="freq"
+                        defaultValue="440"
+                        min="10"
+                        max="8000"
+                        step="1"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="freq">DCO</label>
+                    </div>
+                    <div className="control control__source">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="filter-freq"
+                        defaultValue="1000"
+                        min="20"
+                        max="8000"
+                        step="1"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="filter-freq">LPF</label>
+                    </div>
+                    <div className="control control__source">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="lfo"
+                        defaultValue="20"
+                        min="1"
+                        max="100"
+                        step="1"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="lfo">LFO</label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="module">
-                <label className="module-Title" htmlFor="delay-module">
-                  Delay
-                </label>
-                <div name="delay-module" className="controls">
-                  <div className="control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="delay-time"
-                      defaultValue="0.5"
-                      min="0"
-                      max="1"
-                      step="0.05"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="delay-time">Time</label>
-                  </div>
-                  <div className="control">
-                    <input
-                      type="range"
-                      orient="vertical"
-                      name="delay-feedback"
-                      defaultValue="0.8"
-                      min="0"
-                      max="0.9"
-                      step="0.1"
-                      onInput={this.handleChange}
-                    />
-                    <label htmlFor="delay-feedback">Feedback</label>
+                <div className="module module__delay">
+                  <label className="module-title" htmlFor="delay-module">
+                    Delay
+                  </label>
+                  <div name="delay-module" className="controls">
+                    <div className="control control__delay">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="delay-time"
+                        defaultValue="0.5"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="delay-time">Time</label>
+                    </div>
+                    <div className="control control__delay">
+                      <input
+                        type="range"
+                        orient="vertical"
+                        name="delay-feedback"
+                        defaultValue="0.8"
+                        min="0"
+                        max="0.9"
+                        step="0.1"
+                        onInput={this.handleChange}
+                      />
+                      <label htmlFor="delay-feedback">Feedback</label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div id="info-section">
-            <div className="recording"></div>
-            <h3>Recordings</h3>
-            <ol id="recordingsList">
-              <audio id="recording" controls></audio>
-            </ol>
-            <div className="description">
-              <p>
-                Noiser uses the Web Audio API to create earthshattering dubbed
-                out noise.
-                <br></br>
-                <br></br>
-                Try sweeping through the frequencies with the digitally
-                controlled oscillator (DCO) to build up a wall of noise.
-              </p>
+            <div id="info-section">
+              <h3>Recordings</h3>
+              <ol>
+                <audio id="recording" controls></audio>
+              </ol>
+              <div className="description">
+                <p>
+                  Noiser uses the Web Audio API to create earthshattering dubbed
+                  out noise.
+                  <br />
+                  <br />
+                  Try sweeping through the frequencies with the digitally
+                  controlled oscillator (DCO) to build up a wall of noise.
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="footer">
-          <div>
+          </main>
+          <footer>
             <a href="https://github.com/ianbaxter/noiser">
-              <svg className="dev-svg" viewBox="0 0 128 128">
+              <svg viewBox="0 0 128 128">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -210,7 +238,7 @@ class App extends Component {
                 <path d="M26.484 91.806c-.133.3-.605.39-1.035.185-.44-.196-.685-.605-.543-.906.13-.31.603-.395 1.04-.188.44.197.69.61.537.91zm-.743-.55M28.93 94.535c-.287.267-.85.143-1.232-.28-.396-.42-.47-.983-.177-1.254.298-.266.844-.14 1.24.28.394.426.472.984.17 1.255zm-.575-.618M31.312 98.012c-.37.258-.976.017-1.35-.52-.37-.538-.37-1.183.01-1.44.373-.258.97-.025 1.35.507.368.545.368 1.19-.01 1.452zm0 0M34.573 101.373c-.33.365-1.036.267-1.552-.23-.527-.487-.674-1.18-.343-1.544.336-.366 1.045-.264 1.564.23.527.486.686 1.18.333 1.543zm0 0M39.073 103.324c-.147.473-.825.688-1.51.486-.683-.207-1.13-.76-.99-1.238.14-.477.823-.7 1.512-.485.683.206 1.13.756.988 1.237zm0 0M44.016 103.685c.017.498-.563.91-1.28.92-.723.017-1.308-.387-1.315-.877 0-.503.568-.91 1.29-.924.717-.013 1.306.387 1.306.88zm0 0M48.614 102.903c.086.485-.413.984-1.126 1.117-.7.13-1.35-.172-1.44-.653-.086-.498.422-.997 1.122-1.126.714-.123 1.354.17 1.444.663zm0 0"></path>
               </svg>
             </a>
-          </div>
+          </footer>
         </div>
       </div>
     );

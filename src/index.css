@@ -1,197 +1,232 @@
 * {
   margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-button {
-  border: none;
-  cursor: pointer;
-}
-
-body {
+.app {
   height: 100vh;
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-family: Helvetica, sans-serif;
   background: radial-gradient(#ffb11f, #ff791f);
 }
 
-#content-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#synth-interface {
-  box-shadow: 8px 10px 20px 0px rgba(46, 61, 73, 0.15);
-  border-radius: 40px;
-}
-
-.top {
-  display: flex;
-}
-
-.title {
-  color: rgb(65, 64, 64);
-  background: lightgray;
-  font-size: 4.5em;
-  font-style: italic;
-  letter-spacing: 16px;
+.app-container {
   width: 100%;
+}
+
+.synth-interface {
+  -webkit-box-shadow: 8px 10px 20px 0px rgba(46, 61, 73, 0.15);
+          box-shadow: 8px 10px 20px 0px rgba(46, 61, 73, 0.15);
+  border-radius: 40px;
+  background-color: #ffb11f;
+}
+
+.top-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+h1 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #414040;
+  background: lightgray;
+  font-size: 3.2rem;
+  font-style: italic;
+  font-weight: 200;
+  letter-spacing: 0.2rem;
+  width: 70%;
   text-align: center;
   border-style: solid;
   border-color: grey;
   border-width: 5px 0;
-  text-shadow: 3px 3px 0px grey, 6px 6px 0px rgba(173, 171, 171, 0.801),
-    9px 9px 0px rgb(216, 216, 216);
+  text-shadow: 3px 3px 0px grey, 6px 6px 0px rgba(173, 171, 171, 0.801), 9px 9px 0px #d8d8d8;
 }
 
-.on-btn {
-  width: 32vw;
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  cursor: pointer;
+  width: 15%;
   background: black;
-  font-size: 2.5em;
-  color: white;
+}
+
+.btn__on {
   border-top-left-radius: 40px;
 }
 
-.record-btn {
-  width: 32vw;
-  background: black;
-  display: flex;
-  justify-content: center;
+.btn__record {
   border-top-right-radius: 40px;
 }
 
-.square {
-  width: 35px;
-  height: 35px;
-  background-color: red;
-}
-
-.circle {
-  width: 35px;
-  height: 35px;
-  background-color: red;
-  border-radius: 50px;
-}
-
-.module-Title {
-  border-style: groove;
-  border-width: 0 0 1px 1px;
-  font-size: 1.4em;
-  padding: 20px 0 5px 0;
-}
-
-.controls {
-  background-color: #ffb11f;
-  font-weight: bold;
-  text-align: center;
+.main-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  padding: 0 0 10px 0;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .module {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.module__source {
+  width: 60%;
+}
+
+.module__delay {
+  width: 40%;
+}
+
+.module-title {
+  border-style: groove;
+  border-width: 0 0 1px 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.module-title__source {
+  border-style: groove;
+  border-width: 0 1px 1px 0;
+}
+
+.controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .control {
-  padding: 20px;
-  width: 16vw;
-  border-style: groove;
-  border-width: 0 0 0 1px;
-  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.7rem;
+  padding: 10px 0 25px 0;
 }
 
-.first-control {
-  border-width: 0;
+.control label {
+  margin-top: 10px;
+  font-weight: 600;
 }
 
-.first-module-title {
-  border-width: 0 0 1px 0;
-}
-
-input[type="range"][orient="vertical"] {
-  writing-mode: vertical-lr;
+.control input[type="range"][orient="vertical"] {
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
   -webkit-appearance: slider-vertical;
-  width: 8px;
-  height: 150px;
-  max-width: 20px;
+     -moz-appearance: slider-vertical;
+          appearance: slider-vertical;
   cursor: pointer;
 }
 
-label {
-  padding-top: 15px;
-  display: flex;
-  justify-content: center;
+.control {
+  border-style: groove;
+  border-width: 0 0 0 1px;
+}
+
+.control__source {
+  width: 25%;
+}
+
+.control__source:first-of-type {
+  border-width: 0;
+}
+
+.control__delay {
+  width: 50%;
 }
 
 #info-section {
-  margin: 0 10vw;
+  margin: 0 5%;
 }
 
-.recording {
-  display: flex;
-  justify-content: space-around;
+#info-section p {
+  margin-top: 30px;
 }
 
-h3 {
+#info-section h3 {
   margin-top: 30px;
   padding-bottom: 20px;
 }
 
-.description {
-  margin-top: 40px;
-  width: 100%;
-}
-
-#footer {
+#info-section ol {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: static;
-  bottom: 0;
-  width: 10vw;
-  height: 200px;
-  text-align: center;
+  padding: 0;
 }
 
-.dev-svg {
-  max-width: 2.5em;
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer svg {
+  width: 2.5em;
 }
 
 @media only screen and (min-width: 600px) {
-  body {
-    justify-content: center;
-    align-items: center;
+  .app-container {
+    width: 75%;
   }
-
-  .on-btn {
-    width: 120px;
-  }
-
-  .record-btn {
-    width: 120px;
-  }
-
   .control {
-    padding: 20px;
-    width: 60px;
-    border-style: groove;
-    border-width: 0 0 0 1px;
-    margin-top: 15px;
+    font-size: 1rem;
   }
-
-  .first-control {
-    border-width: 0;
-  }
-
   #info-section {
-    margin: 0 auto;
-  }
-
-  .description {
-    width: 600px;
+    margin: 0;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .app-container {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=index.css.map */

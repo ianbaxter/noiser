@@ -107,14 +107,14 @@ class Synth {
 
     let options = {
       audioBitsPerSecond: 128000, // Maximum possible
-      mimeType: "audio/webm" // Only available audio format
+      mimeType: "audio/webm", // Only available audio format
     };
     recorder = new MediaRecorder(recordingStream.stream, options);
     recorder.start();
   }
 
   stopRecording() {
-    recorder.addEventListener("dataavailable", function(e) {
+    recorder.addEventListener("dataavailable", function (e) {
       document.querySelector("#recording").src = URL.createObjectURL(e.data);
       recorder = null;
       recordingStream = null;
