@@ -151,27 +151,13 @@ h1 {
           align-items: center;
   font-size: 0.7rem;
   padding: 10px 0 25px 0;
+  border-style: groove;
+  border-width: 0 0 0 1px;
 }
 
 .control label {
   margin-top: 10px;
   font-weight: 600;
-}
-
-.control input[type="range"][orient="vertical"] {
-  -webkit-writing-mode: vertical-lr;
-      -ms-writing-mode: tb-lr;
-          writing-mode: vertical-lr;
-  -webkit-appearance: slider-vertical;
-     -moz-appearance: slider-vertical;
-          appearance: slider-vertical;
-  cursor: pointer;
-  width: 20px;
-}
-
-.control {
-  border-style: groove;
-  border-width: 0 0 0 1px;
 }
 
 .control__source {
@@ -184,6 +170,17 @@ h1 {
 
 .control__delay {
   width: 50%;
+}
+
+input[type="range"][orient="vertical"] {
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  -webkit-appearance: slider-vertical;
+     -moz-appearance: slider-vertical;
+          appearance: slider-vertical;
+  cursor: pointer;
+  width: 20px;
 }
 
 #info-section {
