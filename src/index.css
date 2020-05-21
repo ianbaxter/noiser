@@ -110,6 +110,16 @@ h1 {
   width: 40%;
 }
 
+.module__delay .control:last-of-type {
+  border: 0;
+}
+
+.module__delay .module-options {
+  border: 0;
+  border-top: 1px groove;
+  font-weight: 600;
+}
+
 .module-title {
   border-style: groove;
   border-width: 0 0 1px 0;
@@ -121,6 +131,28 @@ h1 {
 .module-title__source {
   border-style: groove;
   border-width: 0 1px 1px 0;
+}
+
+.module-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+  border-width: 0 1px 0 0;
+  border-style: groove;
+  font-size: 0.7rem;
+}
+
+.module-options select {
+  background: lightgrey;
+  border-radius: 6px;
+  font-size: 0.7rem;
 }
 
 .controls {
@@ -152,7 +184,7 @@ h1 {
   font-size: 0.7rem;
   padding: 10px 0 25px 0;
   border-style: groove;
-  border-width: 0 0 0 1px;
+  border-width: 0 1px 0 0;
 }
 
 .control label {
@@ -162,10 +194,6 @@ h1 {
 
 .control__source {
   width: 25%;
-}
-
-.control__source:first-of-type {
-  border-width: 0;
 }
 
 .control__delay {
@@ -218,10 +246,16 @@ footer svg {
     width: 75%;
   }
   .control {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   #info-section {
     margin: 0;
+  }
+  .module-options {
+    font-size: 0.9rem;
+  }
+  .module-options select {
+    font-size: 0.9rem;
   }
 }
 

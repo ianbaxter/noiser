@@ -53,6 +53,12 @@ const App = () => {
       case "delay-feedback":
         synth.changeDelayFeedback(target.value);
         break;
+      case "wave-form":
+        synth.changeWaveForm(target.value);
+        break;
+      case "reverb-toggle":
+        synth.setReverb(target.checked);
+        break;
       default:
         console.log("Default case");
     }
@@ -115,73 +121,92 @@ const App = () => {
                 >
                   Source
                 </label>
-                <div name="source-module" className="controls">
-                  <Control
-                    name="amp"
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    label="DCO Vol"
-                    handleChange={handleChange}
-                    controlStyle="control__source"
-                  />
-                  <Control
-                    name="freq"
-                    min="10"
-                    max="8000"
-                    step="1"
-                    label="DCO Freq"
-                    handleChange={handleChange}
-                    controlStyle="control__source"
-                    defultValue="440"
-                  />
-                  <Control
-                    name="lpf-freq"
-                    min="20"
-                    max="8000"
-                    step="1"
-                    label="LPF"
-                    handleChange={handleChange}
-                    controlStyle="control__source"
-                    defultValue="1000"
-                  />
-                  <Control
-                    name="lfo"
-                    min="1"
-                    max="100"
-                    step="1"
-                    label="LFO"
-                    handleChange={handleChange}
-                    controlStyle="control__source"
-                    defultValue="20"
-                  />
+                <div name="source-module">
+                  <div className="controls">
+                    <Control
+                      name="amp"
+                      min="0"
+                      max="1"
+                      step="0.01"
+                      label="DCO Vol"
+                      handleChange={handleChange}
+                      controlStyle="control__source"
+                    />
+                    <Control
+                      name="freq"
+                      min="10"
+                      max="8000"
+                      step="1"
+                      label="DCO Freq"
+                      handleChange={handleChange}
+                      controlStyle="control__source"
+                      defultValue="440"
+                    />
+                    <Control
+                      name="lpf-freq"
+                      min="20"
+                      max="8000"
+                      step="1"
+                      label="LPF"
+                      handleChange={handleChange}
+                      controlStyle="control__source"
+                      defultValue="1000"
+                    />
+                    <Control
+                      name="lfo"
+                      min="1"
+                      max="200"
+                      step="1"
+                      label="LFO Rate"
+                      handleChange={handleChange}
+                      controlStyle="control__source"
+                      defultValue="20"
+                    />
+                  </div>
+                  <div className="module-options">
+                    <select name="wave-form" onChange={handleChange}>
+                      <option value="sine">Sine</option>
+                      <option value="triangle">Tri</option>
+                      <option value="square">Sqr</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="module module__delay">
                 <label className="module-title" htmlFor="delay-module">
                   Delay
                 </label>
-                <div name="delay-module" className="controls">
-                  <Control
-                    name="delay-time"
-                    min="0"
-                    max="1.5"
-                    step="0.05"
-                    label="Time"
-                    handleChange={handleChange}
-                    controlStyle="control__delay"
-                    defultValue="0.5"
-                  />
-                  <Control
-                    name="delay-feedback"
-                    min="0"
-                    max="0.95"
-                    step="0.1"
-                    label="Feedback"
-                    handleChange={handleChange}
-                    controlStyle="control__delay"
-                    defultValue="0.8"
-                  />
+                <div name="delay-module">
+                  <div className="controls">
+                    <Control
+                      name="delay-time"
+                      min="0"
+                      max="1.5"
+                      step="0.05"
+                      label="Time"
+                      handleChange={handleChange}
+                      controlStyle="control__delay"
+                      defultValue="0.5"
+                    />
+                    <Control
+                      name="delay-feedback"
+                      min="0"
+                      max="0.95"
+                      step="0.1"
+                      label="Feedback"
+                      handleChange={handleChange}
+                      controlStyle="control__delay"
+                      defultValue="0.8"
+                    />
+                  </div>
+                  <div className="module-options">
+                    <label htmlFor="reverb-toggle">Reverb:</label>
+                    <input
+                      type="checkbox"
+                      name="reverb-toggle"
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

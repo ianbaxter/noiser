@@ -7,7 +7,10 @@ let audioContext,
   delaySource,
   feedback,
   recorder,
-  recordingStream;
+  recordingStream,
+  convolver,
+  soundSource,
+  convolverBuffer;
 
 audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -33,10 +36,15 @@ class Synth {
     lfo.type = "sine";
     lfo.frequency.value = 20;
 
+    // Set convolution reverb
+    convolver = audioContext.createConvolver();
+    this.getConvolverBuffer();
+
     // Connect nodes
     lfo.connect(amp.gain);
     osc.connect(filter);
     filter.connect(amp);
+    convolver.connect(amp);
     lfo.start();
     osc.start();
 
@@ -51,6 +59,31 @@ class Synth {
     delay.connect(feedback);
     feedback.connect(delay);
     delaySource.connect(delay);
+  }
+
+  getConvolverBuffer() {
+    let ajaxRequest = new XMLHttpRequest();
+    ajaxRequest.open(
+      "GET",
+      "https://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg",
+      true
+    );
+    ajaxRequest.responseType = "arraybuffer";
+    ajaxRequest.onload = () => {
+      let audioData = ajaxRequest.response;
+      audioContext
+        .decodeAudioData(audioData)
+        .then((buffer) => {
+          convolverBuffer = buffer;
+          soundSource = audioContext.createBufferSource();
+          soundSource.buffer = convolverBuffer;
+          convolver.buffer = convolverBuffer;
+        })
+        .catch((e) => {
+          return "Error with decoding audio data" + e.err;
+        });
+    };
+    ajaxRequest.send();
   }
 
   start() {
@@ -95,6 +128,22 @@ class Synth {
   changeDelayFeedback(amount) {
     console.log("Delay feedback: " + amount);
     feedback.gain.value = amount;
+  }
+
+  changeWaveForm(waveForm) {
+    console.log("Waveform: " + waveForm);
+    osc.type = waveForm;
+  }
+
+  setReverb(reverbToggle) {
+    console.log("Reverb on: " + reverbToggle);
+    if (reverbToggle) {
+      filter.connect(convolver);
+      filter.disconnect(amp);
+    } else {
+      filter.disconnect(convolver);
+      filter.connect(amp);
+    }
   }
 
   startRecording() {
