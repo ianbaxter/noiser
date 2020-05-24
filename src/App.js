@@ -38,7 +38,7 @@ const App = () => {
       case "freq":
         synth.changeFreq(target.value);
         break;
-      case "filter-freq":
+      case "lpf-freq":
         synth.changeFilterFreq(target.value);
         break;
       case "amp":

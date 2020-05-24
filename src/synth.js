@@ -23,8 +23,8 @@ class Synth {
     // Set filter
     filter = audioContext.createBiquadFilter();
     filter.type = "lowshelf";
-    filter.frequency.setValueAtTime(1000, audioContext.currentTime);
-    filter.gain.setValueAtTime(25, audioContext.currentTime);
+    filter.frequency.value = 1000;
+    filter.gain.value = 25;
 
     // Set oscillator
     osc = audioContext.createOscillator();
@@ -50,7 +50,7 @@ class Synth {
 
     // Set delay
     delaySource = amp;
-    delay = audioContext.createDelay();
+    delay = audioContext.createDelay(2);
     delay.delayTime.value = 0.5;
 
     feedback = audioContext.createGain();
