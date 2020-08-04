@@ -15,6 +15,7 @@ const Control = ({
       <input
         type="range"
         orient="vertical"
+        id={name}
         name={name}
         min={min}
         max={max}

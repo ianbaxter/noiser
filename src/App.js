@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./index.css";
+import "./styles/index.css";
 import Synth from "./synth";
 import Control from "./components/Control";
 
@@ -73,6 +73,7 @@ const App = () => {
               <button
                 className="btn btn__on"
                 onClick={() => startSynth(playing)}
+                aria-label="On / Off"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -89,6 +90,7 @@ const App = () => {
                 className="btn btn__record"
                 onClick={() => toggleRecording(recording)}
                 name={recording ? "stop" : "record"}
+                aria-label="Start / Stop Recording"
               >
                 {recording ? (
                   <svg
@@ -121,7 +123,7 @@ const App = () => {
                 >
                   Source
                 </label>
-                <div name="source-module">
+                <div name="source-module" id="source-module">
                   <div className="controls">
                     <Control
                       name="amp"
@@ -164,7 +166,15 @@ const App = () => {
                     />
                   </div>
                   <div className="module-options">
-                    <select name="wave-form" onChange={handleChange}>
+                    <label
+                      htmlFor="wave-form"
+                      aria-label="Select from sine, triangle and square wave forms"
+                    ></label>
+                    <select
+                      id="wave-form"
+                      name="wave-form"
+                      onChange={handleChange}
+                    >
                       <option value="sine">Sine</option>
                       <option value="triangle">Tri</option>
                       <option value="square">Sqr</option>
@@ -202,6 +212,7 @@ const App = () => {
                   <div className="module-options">
                     <label htmlFor="reverb-toggle">Reverb:</label>
                     <input
+                      id="reverb-toggle"
                       type="checkbox"
                       name="reverb-toggle"
                       onChange={handleChange}
@@ -212,10 +223,8 @@ const App = () => {
             </div>
           </div>
           <div id="info-section">
-            <h3>Recordings</h3>
-            <ol>
-              <audio id="recording" controls></audio>
-            </ol>
+            <h2>Recordings</h2>
+            <audio id="recording" controls></audio>
             <div className="description">
               <p>
                 Noiser uses the Web Audio API to create earthshattering dubbed
@@ -229,7 +238,10 @@ const App = () => {
           </div>
         </main>
         <footer>
-          <a href="https://github.com/ianbaxter/noiser">
+          <a
+            href="https://github.com/ianbaxter/noiser"
+            aria-label="View the source code on my GitHub"
+          >
             <svg viewBox="0 0 128 128">
               <path
                 fillRule="evenodd"
