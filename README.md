@@ -2,7 +2,7 @@
  
 An experimental synthesizer that uses React and the Web Audio API to create earth-shattering dubbed out noise.
 
-This is a PWA so if you add it to your homepage it can be used even when you are offline!
+This is a Progressive Web App (PWA) so if you install it, it can be used even when you are offline!
 
 ## Setup
 
