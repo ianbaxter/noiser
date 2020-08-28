@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d707f78e954b46269f10d99223d3d82c",
+    "revision": "3867baf6b4237f65902ac8c1d84b99db",
     "url": "/noiser/index.html"
   },
   {
-    "revision": "90a5b500c66deece3f25",
+    "revision": "558dee24d3afca513f4f",
     "url": "/noiser/static/css/main.b7d7cac9.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/noiser/static/js/2.b807ec7d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "90a5b500c66deece3f25",
-    "url": "/noiser/static/js/main.8a46c043.chunk.js"
+    "revision": "558dee24d3afca513f4f",
+    "url": "/noiser/static/js/main.97898e8c.chunk.js"
   },
   {
     "revision": "ff7c5acb71245816af4f",
